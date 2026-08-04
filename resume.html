@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume — Omar Ashraf Habib</title>
+  <meta name="description" content="Resume of Omar Ashraf Habib.">
+
+  <!-- External stylesheet (Level 3: external CSS) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Internal stylesheet (Level 2: internal CSS) — page-specific layout -->
+  <style>
+    .resume-header {
+      padding: 4rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .resume-embed {
+      width: 100%;
+      height: 800px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background-color: var(--bg-raised);
+      margin-bottom: 3rem;
+    }
+
+    .placeholder-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item h3 { margin-bottom: 0.2rem; }
+
+    .timeline-meta {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+  </style>
+</head>
+<body data-theme="light">
+
+    <script>
+    (function () {
+        var saved = localStorage.getItem("theme");
+        if (saved) document.body.setAttribute("data-theme", saved);
+    })();
+    </script>
+
+  <!-- ===== Header / Navigation ===== -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="brand">Omar Ashraf Habib</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html" aria-current="page">Resume</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><button class="theme-toggle" id="theme-toggle">Switch to Dark Mode</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="resume-header">
+      <div>
+        <p class="eyebrow">// resume</p>
+        <h1>My Resume</h1>
+      </div>
+      <!-- Download button: points at the PDF once it's uploaded to assets/ -->
+      <a href="assets/resumeOmarHabib.pdf" download class="btn btn-primary">Download PDF</a>
+    </div>
+
+    <!-- Embedded resume viewer.
+         Once assets/resumeOmarHabib.pdf exists, this iframe will render it directly. -->
+    <div class="resume-embed">
+      <iframe
+        src="assets/resumeOmarHabib.pdf"
+        title="Omar Ashraf Habib's Resume"
+        width="100%"
+        height="100%"
+        style="border: none; border-radius: var(--radius);">
+        <p class="placeholder-note">
+          Your PDF viewer doesn't support inline preview.
+          <a href="assets/resumeOmarHabib.pdf">Download the PDF instead</a>.
+        </p>
+      </iframe>
+    </div>
+
+    <!-- ===== Text summary (mirrors the resume, notebook-margin style) ===== -->
+    <section class="section margin-rule" style="padding-top: 0;">
+      <h2 style="margin-bottom: 1.5rem;">Summary</h2>
+      <p style="max-width: 68ch; color: var(--text-muted);">
+        Customer service-oriented IT support professional with a strong track
+        record in providing exceptional technical assistance and customer
+        support. Experienced in troubleshooting hardware and software issues,
+        managing classroom technology, and teaching STEM-related subjects.
+      </p>
+
+      <h2 style="margin: 2.5rem 0 1.5rem;">Education</h2>
+
+      <div class="timeline-item">
+        <h3>York University</h3>
+        <p class="timeline-meta">January 2024 – Present</p>
+        <p>Bachelor of Information Technology. Developing proficiency in
+        MATLAB for data analysis and numerical computation, IT project
+        management, and system design.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>University of New Brunswick</h3>
+        <p class="timeline-meta">September 2022 – December 2023</p>
+        <p>Bachelor of Science in Computer Science. Gained proficiency in Java
+        programming and software development, SQL and database management,
+        and data structures and algorithms.</p>
+      </div>
+
+      <h2 style="margin: 2.5rem 0 1.5rem;">Experience</h2>
+
+      <div class="timeline-item">
+        <h3>IT Support and Teaching Assistant</h3>
+        <p class="timeline-meta">STEM Minds Corp, Aurora, ON — February 2024 – Present</p>
+        <p>Provide IT support for staff and students, troubleshooting hardware
+        and software issues. Assist in teaching STEM-related subjects, manage
+        classroom technology, and guide students through technical problems on
+        STEM projects.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Customer Service</h3>
+        <p class="timeline-meta">SaveWay, Fredericton, NB — November 2022 – April 2023</p>
+        <p>Contributed to team objectives in a fast-paced environment,
+        answering customer questions about sizing, accessories, and
+        merchandise care while building trust through professional,
+        knowledgeable support.</p>
+      </div>
+
+      <h2 style="margin: 2.5rem 0 1.5rem;">Skills</h2>
+      <p>IT Support &amp; Troubleshooting, Classroom Technology Management,
+      Java Programming, SQL &amp; Database Management, MATLAB for Data
+      Analysis, Critical Thinking, Problem Solving, Effective Communication,
+      Time Management.</p>
+
+      <h2 style="margin: 2.5rem 0 1.5rem;">Languages</h2>
+      <p>English (Fluent) &middot; Arabic (Fluent) &middot; Russian (Fluent)</p>
+
+      <div class="timeline-item" style="margin-top: 2.5rem;">
+        <h3>Projects</h3>
+        <p class="timeline-meta">See the <a href="projects.html">Projects page</a> for details</p>
+        <p>Multiple Java OOP projects covering class design, validation logic,
+        and simulation systems, plus this portfolio site itself, built with
+        HTML, CSS, and vanilla JavaScript.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <p class="copyright">&copy; <span id="year">2026</span> Omar Ashraf Habib. All rights reserved.</p>
+      <div class="footer-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/OmarAshrafHabib" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+        <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

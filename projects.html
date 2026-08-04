@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Omar Ashraf Habib</title>
+  <meta name="description" content="Projects by Omar Ashraf Habib — Java OOP applications and web development work.">
+
+  <!-- External stylesheet (Level 3: external CSS) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Internal stylesheet (Level 2: internal CSS) — page-specific layout -->
+  <style>
+    .projects-header {
+      padding: 4rem 0 1rem;
+      max-width: 60ch;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .filter-bar input {
+      flex: 1;
+      min-width: 220px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      padding: 0.7rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background-color: var(--bg-raised);
+      color: var(--text);
+    }
+    .filter-bar input:focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: 1px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding-bottom: 4rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .project-card .card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-card .card-title { margin: 0; }
+
+    .project-card p.card-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      flex-grow: 1;
+    }
+
+    .project-card .card-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .project-card .card-actions a {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.7rem;
+      border-radius: var(--radius);
+      color: var(--text);
+    }
+    .project-card .card-actions a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    #no-results {
+      display: none;
+      text-align: center;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      padding: 3rem 0;
+    }
+  </style>
+</head>
+<body data-theme="light">
+
+    <script>
+    (function () {
+        var saved = localStorage.getItem("theme");
+        if (saved) document.body.setAttribute("data-theme", saved);
+    })();
+    </script>
+
+  <!-- ===== Header / Navigation ===== -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="brand">Omar Ashraf Habib</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><button class="theme-toggle" id="theme-toggle">Switch to Dark Mode</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="projects-header">
+      <p class="eyebrow">// projects</p>
+      <h1>Things I've built</h1>
+      <p style="color: var(--text-muted);">
+        Mostly Java, mostly built for coursework — each one focused on a
+        different object-oriented programming concept. Full source is on
+        GitHub.
+      </p>
+    </section>
+
+    <!-- Filter bar: wired up in Phase 2, Part 5 -->
+    <div class="filter-bar">
+      <input type="text" id="filter-input" placeholder="Search projects by title or category…">
+    </div>
+
+    <div class="project-grid" id="project-grid">
+
+      <div class="project-card card">
+        <span class="card-tag">Java · OOP</span>
+        <h3 class="card-title">FunZone Badge System &amp; Dog Class Simulation</h3>
+        <p class="card-desc">
+          Demonstrates OOP fundamentals through two applications: a Dog class
+          simulating pet attributes and behaviors, and a badge system tracking
+          visitor expenses at an entertainment venue.
+        </p>
+        <div class="card-actions">
+          <a href="https://github.com/OmarAshrafHabib/Java-OOP-FunZone-Badge-System-Dog-Class-Simulation" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card card">
+        <span class="card-tag">Java · OOP</span>
+        <h3 class="card-title">Camp Bunk &amp; Camper Management</h3>
+        <p class="card-desc">
+          Models a summer camp's bunk and camper management system, with
+          Bunk and Camper classes and a driver program to calculate weekly
+          fees.
+        </p>
+        <div class="card-actions">
+          <a href="https://github.com/OmarAshrafHabib/Java-OOP-Lab-Camp-Bunk-Camper-Management" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card card">
+        <span class="card-tag">Java · Validation</span>
+        <h3 class="card-title">Triangle Validation &amp; Peer Mentor Eligibility</h3>
+        <p class="card-desc">
+          A Peer Mentor Eligibility Checker using decision-making logic,
+          paired with an enhanced Triangle class that identifies equilateral
+          and right triangles with precision handling.
+        </p>
+        <div class="card-actions">
+          <a href="https://github.com/OmarAshrafHabib/Java-OOP-Triangle-Validation-and-Peer-Mentor-Eligibility" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card card">
+        <span class="card-tag">Java · Data</span>
+        <h3 class="card-title">Scholarship &amp; Sleep Tracker</h3>
+        <p class="card-desc">
+          A Scholarship Assessment tool that determines student eligibility
+          and award amounts based on GPA and credit hours, plus a Sleep
+          Tracker that analyzes sleep patterns.
+        </p>
+        <div class="card-actions">
+          <a href="https://github.com/OmarAshrafHabib/Java-OOP-Scholarship-and-Sleep-Tracker" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card card">
+        <span class="card-tag">Java · Calculation</span>
+        <h3 class="card-title">Shipping Calculator &amp; Mayan Converter</h3>
+        <p class="card-desc">
+          A Shipping Calculator for box and tube volumes and surface areas,
+          paired with a Mayan Numeral Converter that translates Arabic
+          numbers into Mayan symbols.
+        </p>
+        <div class="card-actions">
+          <a href="https://github.com/OmarAshrafHabib/Java-OOP-Shipping-Calculator-Mayan-Converter" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card card">
+        <span class="card-tag">HTML · CSS · JS</span>
+        <h3 class="card-title">This Portfolio Site</h3>
+        <p class="card-desc">
+          The site you're looking at right now — built from scratch with
+          semantic HTML, custom CSS, and vanilla JavaScript for theme
+          switching, dynamic content, and form validation.
+        </p>
+        <div class="card-actions">
+          <a href="https://github.com/OmarAshrafHabib" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p id="no-results">No projects match your search.</p>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <p class="copyright">&copy; <span id="year">2026</span> Omar Ashraf Habib. All rights reserved.</p>
+      <div class="footer-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/OmarAshrafHabib" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+        <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
