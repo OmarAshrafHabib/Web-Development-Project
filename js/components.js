@@ -7,10 +7,6 @@ function loadComponent(selector, filePath) {
     .then(html => {
       document.querySelector(selector).innerHTML = html;
 
-      // After injecting the header, re-run the theme toggle setup
-      // (the button now exists in the DOM). initThemeToggle() lives in
-      // theme.js and simply does nothing if the button isn't found —
-      // which is what happens harmlessly when this runs for the footer.
       initThemeToggle();
     })
     .catch(error => console.error(error));
