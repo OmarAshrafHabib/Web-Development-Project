@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Building this site from scratch",
+    "date": "2026-07-20",
+    "summary": "Kicking off the project — planning the design system and building the HTML/CSS foundation before any JavaScript.",
+    "category": "Project Log",
+    "content": "Before writing any JavaScript, I spent time on the HTML and CSS foundation: a shared stylesheet with design tokens (colors, fonts, spacing), then six pages built on top of it — Home, About, Resume, Projects, Blog, and Contact. Getting the structure and styling consistent first made every JavaScript feature afterward much easier to slot in, since the markup and class names were already predictable across pages."
+  },
+  {
+    "id": 2,
+    "title": "Adding a dark mode toggle with localStorage",
+    "date": "2026-07-27",
+    "summary": "How I built the light/dark theme switcher and made the preference persist across pages using localStorage.",
+    "category": "JavaScript",
+    "content": "The theme switcher works by toggling a data-theme attribute on the body element, with CSS custom properties defined for both light and dark values. The trickier part was making the preference persist: every time the theme changes, it's saved with localStorage.setItem('theme', theme), and on every page load, a small inline script reads it back with localStorage.getItem('theme') before the page even fully renders — this prevents a visible flash of the wrong theme while the rest of the JavaScript loads. One challenge was that the toggle button eventually got moved into a dynamically-loaded header component, which meant the theme setup code needed to be re-run after the header finished loading, not just once on page load."
+  }
+]
