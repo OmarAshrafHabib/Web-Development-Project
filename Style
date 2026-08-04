@@ -1,0 +1,286 @@
+/* ==========================================================================
+   style.css — Shared external stylesheet
+   Omar Ashraf Habib — Portfolio
+   ========================================================================== */
+
+/* ---- Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---- Design tokens ---- */
+:root {
+  --bg: #FAF9F6;
+  --bg-raised: #FFFFFF;
+  --text: #1D1D1B;
+  --text-muted: #5C5A54;
+  --accent: #3A5A40;       /* deep moss green */
+  --accent-2: #E8871E;     /* burnt amber */
+  --border: #DCD8CE;
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --max-width: 1080px;
+  --radius: 4px;
+}
+
+[data-theme="dark"] {
+  --bg: #1A1A17;
+  --bg-raised: #232320;
+  --text: #F2F0EA;
+  --text-muted: #ADA99E;
+  --accent: #6FA37A;
+  --accent-2: #F2A44E;
+  --border: #3A3934;
+}
+
+/* ---- Reset ---- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+ul, ol { list-style-position: inside; }
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+/* ---- Typography scale ---- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+h1 { font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 700; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+h3 { font-size: 1.3rem; }
+
+p { margin-bottom: 1rem; color: var(--text); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---- Layout helpers ---- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+/* ---- Header / Nav ---- */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background-color: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+.brand:hover { text-decoration: none; }
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.main-nav a {
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom-color: var(--accent);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Mobile nav toggle (hidden on desktop) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.6rem;
+  font-family: var(--font-mono);
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #FAF9F6;
+}
+.btn-primary:hover { background-color: #2E4832; }
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--text);
+  color: var(--text);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---- Footer ---- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0;
+  margin-top: 4rem;
+}
+
+.footer-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footer-links a { color: var(--text-muted); font-size: 0.9rem; }
+.footer-links a:hover { color: var(--accent); }
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+.social-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.copyright {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ---- Notebook margin rule (used on Resume + Blog) ---- */
+.margin-rule {
+  border-left: 2px solid var(--border);
+  padding-left: 1.5rem;
+  margin-left: 0.25rem;
+}
+
+/* ---- Cards ---- */
+.card {
+  background-color: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 720px) {
+  .main-nav { display: none; }
+  .main-nav.open { display: block; }
+  .nav-wrap { flex-wrap: wrap; }
+  .nav-toggle { display: inline-block; }
+  .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1rem 0; }
+  .footer-wrap { flex-direction: column; align-items: flex-start; }
+}
