@@ -1,5 +1,3 @@
-// theme.js
-
 
 function applyTheme(theme) {
   document.body.setAttribute("data-theme", theme);
@@ -9,12 +7,13 @@ function applyTheme(theme) {
     toggleBtn.textContent = theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode";
   }
 
- 
+  // Save the selected theme so it persists across pages and reloads
   localStorage.setItem("theme", theme);
 }
 
 function initThemeToggle() {
   const toggleBtn = document.getElementById("theme-toggle");
+
 
   if (!toggleBtn) return;
 
