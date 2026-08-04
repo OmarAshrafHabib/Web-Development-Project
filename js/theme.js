@@ -14,8 +14,10 @@ function applyTheme(theme) {
 function initThemeToggle() {
   const toggleBtn = document.getElementById("theme-toggle");
 
-
   if (!toggleBtn) return;
+
+  if (toggleBtn.dataset.initialized === "true") return;
+  toggleBtn.dataset.initialized = "true";
 
   const current = document.body.getAttribute("data-theme") || "light";
   toggleBtn.textContent = current === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode";
