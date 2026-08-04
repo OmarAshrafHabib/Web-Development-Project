@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Building this site from scratch",
-    "date": "2026-07-20",
+    "date": "2026-08-02",
     "summary": "Kicking off the project, planning the design system and building the HTML/CSS foundation before any JavaScript.",
     "category": "Project Log",
     "content": "Okay so before touching any JavaScript I figured I should actually get the HTML and CSS sorted first, otherwise I'd just be building on top of a mess. I set up one main stylesheet with all my colors and fonts as variables at the top, and then built out the six pages one at a time, Home, About, Resume, Projects, Blog, Contact. Honestly the most annoying part wasn't the code, it was keeping the file names consistent, all lowercase, no typos, because I got bitten by that more than once later when things wouldn't load and it turned out to just be a capital letter in a filename. Getting the nav bar and footer looking the same on every page took longer than I expected too, just copy pasting the same block into six files and making sure I didn't miss one. Worth it though, because once this part was done, adding JavaScript features on top was way less painful since everything already had consistent class names and structure to hook into."
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "title": "Adding a dark mode toggle with localStorage",
-    "date": "2026-07-27",
+    "date": "2026-08-03",
     "summary": "How I built the light/dark theme switcher and made the preference persist across pages using localStorage.",
     "category": "JavaScript",
     "content": "This one seemed simple at first, just switch a class on the body and swap some colors, but getting it to actually remember your choice across pages took some trial and error. The idea is that every time you click the toggle, it saves your choice to localStorage, and then on every page load a little script checks if there's a saved theme and applies it before anything really renders, so you don't get that annoying flash of white before it switches to dark. Where I actually got stuck was after I moved the header into its own file that gets loaded in with JavaScript. The toggle button lives inside that header, so it doesn't exist on the page right when it first loads, only after the fetch finishes. That meant the click didn't do anything for a while because the code was trying to attach itself to a button that wasn't there yet. Then when I fixed that, a new problem showed up. Clicking the button did nothing again, but this time silently, no errors, nothing. Took me forever to figure out it was actually attaching the click event twice, once when the header loaded and once when the footer loaded, since I was calling the same setup function after both, so every click was toggling the theme on and then immediately back off. I only found that by using getEventListeners in the console and seeing there were two click handlers instead of one. Fixed it by adding a flag so the setup only ever runs once per button. Honestly kind of a satisfying bug to finally nail down after staring at it for so long."
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "title": "Loading blog posts dynamically from JSON",
-    "date": "2026-08-01",
+    "date": "2026-08-03",
     "summary": "Replacing hardcoded blog content with posts fetched from a JSON file, sorted and formatted on the fly.",
     "category": "JavaScript",
     "content": "This is actually the exact feature that's making this post show up on the page you're reading right now, which is kind of a fun way to test it. Instead of typing blog posts directly into the HTML, I moved them into a separate JSON file, and then wrote a script that fetches that file, sorts the posts by date so the newest one shows up first, and builds the actual HTML for each card using JavaScript. Small thing that tripped me up, the dates in the JSON are stored like 2026-08-01, which looks fine to a computer but ugly on an actual page, so I had to reformat them into something like August 1, 2026 before displaying them. Also had to make sure the sorting happened on the raw data before I built any HTML, not after, because trying to reorder elements that are already on the page is way more of a headache than just sorting an array first. The Latest Post badge isn't something I typed into the JSON either, it just automatically gets added to whichever post ends up first after sorting, so I don't have to remember to update it every time I add something new."
@@ -26,7 +26,7 @@
   {
     "id": 4,
     "title": "Validating the contact form without a page reload",
-    "date": "2026-08-02",
+    "date": "2026-08-04",
     "summary": "Adding client-side validation to the contact form, with inline error messages that clear as you type.",
     "category": "JavaScript",
     "content": "The contact form needed to check three things before letting you submit. that you actually typed a name, that your email looks like a real email, and that your message is at least 20 characters so people can't just submit one word. First step was stopping the form from doing its normal browser submit thing with preventDefault, otherwise the page would just refresh and none of my JavaScript would matter. For each field I check it separately, and if something's wrong I grab a little span sitting next to that input, already in the HTML, just hidden, and show it with an error message. The email check uses a regex I honestly didn't write from scratch, used the pattern from the starter code hint since writing your own email regex from memory is kind of a nightmare. The part I liked adding most was making errors disappear the second you start typing to fix them, instead of making you hit submit again just to see if it went away. Felt like a small thing but makes the form way less annoying to actually use. Once everything checks out, the form disappears completely and a message sent box shows up instead, even though there's no real backend actually sending anything anywhere yet."
@@ -34,7 +34,7 @@
   {
     "id": 5,
     "title": "Building a live search filter for projects and posts",
-    "date": "2026-08-03",
+    "date": "2026-08-04",
     "summary": "Adding instant search filtering to the Projects and Blog pages without any page reloads.",
     "category": "JavaScript",
     "content": "Last feature was a search box on both the Projects page and the Blog page that filters cards as you type, no reload, no submit button, just instant. The actual filtering part wasn't too bad. Loop through every card, check if what you typed shows up in the title or the category tag, and hide the ones that don't match while keeping a count so I can show a no results message if literally nothing matches. What actually got me was that on the Blog page specifically, the posts aren't sitting in the HTML from the start, they get added in later by a separate fetch call. So my filter script would run right when the page loaded, find zero cards because they hadn't shown up yet, and just do nothing. Took a bit to realize that was even the problem since there was no error, it just silently filtered an empty page. Fixed it by having the blog script fire off a custom event once it's actually done adding the posts, and having the filter script listen for that event and run itself again at that point. Felt like a slightly hacky fix at first but it's actually a pretty normal way to handle two scripts that depend on each other's timing."
