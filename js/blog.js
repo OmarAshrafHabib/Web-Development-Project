@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
           this.textContent = isOpen ? "Read more →" : "Show less ↑";
         });
       });
+
+      document.dispatchEvent(new Event("posts-rendered"));
     })
     .catch(error => console.error("Error loading posts:", error));
 });
